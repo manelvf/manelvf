@@ -27,12 +27,6 @@ function draw(ctx) {
     ctx.clearRect(0,0,App.availW,App.availH); // clear canvas
     ctx.save();
 
-    ctx.fillStyle = "rgb(200,0,0)";
-    ctx.fillRect (10, 10, 55, 50);
-
-    ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-    ctx.fillRect (30, 30, 55, 50);
-
     ctx.fillStyle = "rgba(200, 255, 200, 0.5)";
     ctx.beginPath();
     ctx.arc(App.x, App.y, App.radius, 0, Math.PI*2,true);
@@ -84,7 +78,6 @@ function init() {
   } 
 
 }
-console.log(2);
 
 window.onload = function() {
   console.log(1);
