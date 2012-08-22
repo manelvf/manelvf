@@ -1,3 +1,24 @@
+
+var n_of_balls = 3;
+
+// return -1 or 1
+function getRandomSign() {
+}
+
+function Ball (){
+}
+
+Ball.prototype.init = function(x,y) {
+  this.dx = getRandomSign();
+  this.dy = getRandomSign();
+  this.x = x;
+  this.y = y;
+  this.radius = 50;
+}
+
+balls = [];
+
+
 App = {
   x: 75,
   y: 75,
@@ -10,9 +31,9 @@ App = {
 
 
 function draw(ctx) {
+
     App.x += App.dx;
     App.y += App.dy;
-    //console.log(App.x, App.y, App.availW, App.availH);
 
     if ((App.x + App.radius) > App.availW)
       App.dx = -1;
@@ -27,7 +48,7 @@ function draw(ctx) {
     ctx.clearRect(0,0,App.availW,App.availH); // clear canvas
     ctx.save();
 
-    ctx.fillStyle = "rgba(200, 255, 200, 0.5)";
+    ctx.fillStyle = "rgba(100, 255, 205, 0.5)";
     ctx.beginPath();
     ctx.arc(App.x, App.y, App.radius, 0, Math.PI*2,true);
     ctx.fill();
@@ -71,15 +92,22 @@ function init() {
 
   if (frame.getContext) {
     ctx = frame.getContext("2d");
-    function drawMe() {
-      draw(ctx);
+
+    for (var k=0; k<n_of_balls; k++) {
+      balls.push(new Ball());
     }
-    setInterval(drawMe,1000/30);
+
+    setInterval("draw(ctx)",1000/30);
   } 
 
 }
 
-window.onload = function() {
-  console.log(1);
+// init 
+$(document).ready( function() {
+  $("#showMap").click( function() {
+    $("#map").toggle();
+  });
+
   init();
-}
+});
+

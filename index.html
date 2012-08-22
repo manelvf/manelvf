@@ -38,8 +38,15 @@
 
   <style>
     body {
-      background-color: IndianRed;
-      color: white;
+      /* Fallback for web browsers that doesn't support RGBa */
+      background: rgb(0, 0, 0) transparent;
+      /* RGBa with 0.6 opacity */
+      background: rgba(0, 0, 0, 0.2);
+      /* For IE 5.5 - 7*/
+      filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#20000000, endColorstr=#20000000);
+      /* For IE 8*/
+      -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#20000000, endColorstr=#20000000)";
+      
     }
     div.separate {
       padding-top:50px;
@@ -50,7 +57,15 @@
     span.red {
       color:red;
     }
+    sub {
+      font-size:0.8em;
+    }
   </style>
+
+  <!-- Div for canvas element -->
+  <div id="screenFrame" style="position:fixed;display:none;" >
+    <canvas id="frame" width="1000" height="1000" ></canvas>
+  </div>
 
 
   <!-- Github ribbon -->
@@ -72,15 +87,16 @@
 		</div>
 		<div class="eight columns clearfix">
 			<h3>About me</h3>
+      <img style="float:left;padding: 0px 15px 15px 0px;" src="images/eu.jpg" widht="104" height="105" />
       <p>Hi, I'm a professional software and web developer focused on Javascript, Python, Ruby and PHP. I'm interested in a wide range of topics: since e-commerce to graphics programming. You can browse thru my previous works from this gateway.  
       </p>
       <p>
       Some time ago I started to collaborate and/or helped to initialize a few Open Source projects. Don't hesitate on contact me in order to collaborate or ask any question about them. 
       </p>
       <p>
-      Currently, I'm living on <a href="http://goo.gl/maps/tZJdG">Cari&ntilde;o, Galicia, Spain</a> and I'm used to work on remote. 
+      Currently, I'm living on a nice place<a id="showMap" href="#"><sub>[show]</sub></a> and I'm used to work on remote. 
       </p>
-      <p>
+      <p id="map" style="display:none;" >
       <iframe width="340" height="280" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=gl&amp;geocode=&amp;q=a+pedra&amp;aq=&amp;sll=43.732648,-7.877766&amp;sspn=0.195484,0.374222&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Pedra,+Cari%C3%B1o,+A+Coru%C3%B1a,+Galicia,+Espa%C3%B1a&amp;z=14&amp;ll=43.728631,-7.876863&amp;output=embed"></iframe><br /><small><a href="https://maps.google.com/maps?f=q&amp;source=embed&amp;hl=gl&amp;geocode=&amp;q=a+pedra&amp;aq=&amp;sll=43.732648,-7.877766&amp;sspn=0.195484,0.374222&amp;t=h&amp;ie=UTF8&amp;hq=&amp;hnear=Pedra,+Cari%C3%B1o,+A+Coru%C3%B1a,+Galicia,+Espa%C3%B1a&amp;z=14&amp;ll=43.728631,-7.876863" style="color:#0000FF;text-align:left">Visualizar o mapa ampliado</a></small>
       
       </p>
@@ -150,10 +166,6 @@
 
 	</div><!-- container -->
 
-  <!-- Div for canvas element -->
-  <div id="screenFrame" style="position:fixed;display:none;" >
-    <canvas id="frame" width="1000" height="1000" ></canvas>
-  </div>
 
 
 <!-- End Document
@@ -173,6 +185,7 @@
 
 </script>
 
+<script type="text/javascript" src="js/zepto.min.js"></script>
 <script type="text/javascript" src="js/main.js"></script>
 </body>
 </html>
