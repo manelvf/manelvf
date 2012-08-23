@@ -1,5 +1,5 @@
 
-var n_of_balls = 3;
+var n_of_balls = 5;
 
 // return -1 or 1
 function getRandomSign() {
